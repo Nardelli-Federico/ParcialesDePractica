@@ -1,0 +1,1 @@
+cuadruple = ( * 4 )
