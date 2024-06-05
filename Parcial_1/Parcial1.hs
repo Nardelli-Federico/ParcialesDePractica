@@ -13,7 +13,7 @@ data Criatura = Criatura {
 
 data Fantasma = Fantasma {
     categoria     :: Int,
-    asunto        :: String,
+    asunto        :: String
 }
 
 data Especie   = Siempredetras | Gnomo | Fantasma
