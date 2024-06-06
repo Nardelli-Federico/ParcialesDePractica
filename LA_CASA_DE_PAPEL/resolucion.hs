@@ -3,10 +3,19 @@
 data Ladron = Ladron {
     nombre        :: String,
     habilidades   :: [Habilidades],
-    pistola       :: Int,
-    ametralladora :: Int
+    armas          :: [Arma]
 }
 type Habilidades = String
+
+data Arma =
+    Pistola {
+        cantidad :: Int
+    } 
+    |Metralleta {
+        cantidadM :: Int,
+        balas     :: Int
+    }
+
 
 data Rehen = Rehen {
     nombreR       :: String,
@@ -19,15 +28,13 @@ type Plan = String
 tokio = Ladron {
     nombre        = "tokio",
     habilidades   = ["trabajo psicologico", "entrar en moto"],
-    pistola       = 2,
-    ametralladora = 1
+    arma          = [Pistola 2, Metralleta 1 40 ]
 }
 
 profesor = Ladron {
     nombre        = "profesor",
     habilidades   = ["disfrazarse de linyera","disfrazarse de payaso","estar siempre un paso adelante"],
-    pistola       = 0,
-    ametralladora = 0
+    arma          = []
 }
 pablo = Rehen {
     nombreR       = "pablo",
@@ -49,9 +56,8 @@ ladronInteligente unLadron = ( > 2) . length $ habilidades unLadron
 
 --3) -----------------------------------------------
 
-adquirirArma unLadron nuevaArma 
-    |nuevaArma == "pistola"       = unLadron { pistola = pistola unLadron + 1}
-    |nuevaArma == "ametralladora" = unLadron { ametralladora = ametralladora unLadron +1}
+
+adquirirArma unLadron nuevaArma = -- SOlo pueden adquirir pistolas y metralladoras
 
 --4) -----------------------------------------------   
-intimidadRehen unLadron unRehen = 
+--intimidadRehen unLadron unRehen metodo = 
