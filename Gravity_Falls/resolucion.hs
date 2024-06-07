@@ -6,11 +6,7 @@ data Persona = Persona {
 type Item = String
 
 data Criatura =
-    Fantasma {
-        categoria     :: Int,
-        asunto        :: String 
-    }
-    |Gnomo {
+    Gnomo {
         cantidad      :: Int
     }
     |SiempreDetras deriving (Eq, Ord)
@@ -19,8 +15,17 @@ type Debilidad = String
 
 --2)----------------------------------------
 
-{-enfrentamiento unaPersona unaCriatura 
-    |unaCriatura == Fantasma
--}
-type cumpleAsuntoPendiente :: Persona -> Criatura -> Bool
+venceA unaPersona unaCriatura 
+    | unaCriatura == Gnomo = head ( items unaPersona ) == "barredor de ojas"
+    |otherwise = False
+
+experienciaGanada 
+
+enfrentamiento :: t1 -> t2 -> p
+enfrentamiento unaPersona unaCriatura 
+    | unaPersona `venceA` unaCriatura = Persona {experiencia = sumarExperiencia unaPersona ( experienciaGanada unaCriatura ) }
+    | otherwise                       = Persona {experiencia = experiencia unaPersona +1}
+
+
+
 
