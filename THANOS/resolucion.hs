@@ -1,3 +1,4 @@
+import Prelude
 data Guantelete = Guantelete {
     material :: String,
     gemas    :: [Gema]
@@ -36,7 +37,7 @@ energiaTotal = sum . map energia . filter ( ( > 1 ) . length . habilidades )
 -- 3)
 
 laMente :: Int -> Gema
-laMente energiaRestada unPersonaje = quitarEnergia energiaRestada unPersonaje
+laMente  = quitarEnergia
 
 elPoder :: Gema
 elPoder unPersonaje 
@@ -75,3 +76,11 @@ laGemaLoca gemaUsada = gemaUsada . gemaUsada
 quitarEnergia :: Int -> Gema
 quitarEnergia energiaRetirada unPersonaje = unPersonaje {energia = energia unPersonaje - energiaRetirada}
 
+--4)
+
+guanteleteDeGoma = Guantelete {material = "goma", gemas = [elTiempo, elAlma "usar Mjlonir", laGemaLoca (elAlma "programacion en haskell")]}
+
+--5) 
+
+utilizar :: [Gema] -> Gema
+utilizar gemas enemigo = foldr ($) enemigo gemas
